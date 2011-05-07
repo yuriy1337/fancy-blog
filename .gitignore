@@ -1,0 +1,15 @@
+.bundle
+db/*
+.sqlite3
+log/*
+.log
+tmp/
+.project
+*/tmp/
+*/log/
+*/nbproject/
+*/.bundle/
+*.log
+*.sqlite3
+*.DS_Store
+*.idea
