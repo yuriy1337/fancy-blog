@@ -83,6 +83,7 @@ PLATFORMS
 
 DEPENDENCIES
   devise
+  i18n
   jquery-rails (>= 0.2.6)
   jrails
   rails (= 3.0.7)

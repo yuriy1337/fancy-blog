@@ -11,6 +11,7 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'jrails'
 gem 'will_paginate'
 gem 'devise'
+gem 'i18n'
 # Use unicorn as the web server
 # gem 'unicorn'
 
