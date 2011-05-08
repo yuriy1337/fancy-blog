@@ -1,4 +1,17 @@
 Bridalka::Application.routes.draw do
+  
+  devise_for :users
+  
+  resources :videos
+
+  resources :images
+
+  resources :posts
+
+  resources :streams
+
+  root :to => 'streams#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
