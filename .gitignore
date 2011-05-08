@@ -1,10 +1,5 @@
-.bundle
-db/*
-.sqlite3
 log/*
-.log
-tmp/
-.project
+*.project
 */tmp/
 */log/
 */nbproject/
