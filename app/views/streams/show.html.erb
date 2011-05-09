@@ -2,7 +2,11 @@
 
 <p>
   <b>Name:</b>
-  <%= @stream.name %>
+  <%= @stream.name %>:<br/>
+  <b>Posts:</b><br/>
+  <% @stream.posts.each do |p| %>
+    <%= p.title %><br/>
+  <% end %>
 </p>
 
 

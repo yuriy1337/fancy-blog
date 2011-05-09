@@ -1,8 +1,15 @@
 class PostsController < ApplicationController
+  
+  before_filter :get_stream
+
+  def get_stream
+    @stream = Stream.find(params[:stream_id])
+  end
+  
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
+    @posts = @stream.post.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,8 +20,14 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = Post.find(params[:id])
-
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts params[:id]
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    @post = @stream.posts.find(params[:id])
+    
+    p @post
+    puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
@@ -24,7 +37,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = Post.new
+    @post = @stream.posts.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,18 +47,18 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    @post = @stream.posts.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.xml
   def create
-    @post = Post.new(params[:post])
+    @post = @stream.posts.new(params[:post])
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
-        format.xml  { render :xml => @post, :status => :created, :location => @post }
+        format.html { redirect_to([@stream, @post], :notice => 'Post was successfully created.') }
+        format.xml  { render :xml => @post, :status => :created, :location => [@stream, @post] }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
@@ -56,7 +69,7 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
-    @post = Post.find(params[:id])
+    @post = @stream.post.find(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])

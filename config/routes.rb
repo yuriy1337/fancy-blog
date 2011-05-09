@@ -2,13 +2,15 @@ Bridalka::Application.routes.draw do
   
   devise_for :users
   
-  resources :videos
-
-  resources :images
-
-  resources :posts
-
-  resources :streams
+  resources :streams do
+    resources :posts do #its not good not nest so many time, but anything 
+                        #a post should not be accessed and this is only 
+                        #for creating images and videos
+                        #its really for ajax to upload an image one by one
+      resources :images
+      resources :videos
+    end  
+  end
 
   root :to => 'streams#index'
   
