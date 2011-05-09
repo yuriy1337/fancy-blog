@@ -1,5 +1,7 @@
 Bridalka::Application.routes.draw do
   
+  resources :uploads
+
   devise_for :users
   
   resources :streams do

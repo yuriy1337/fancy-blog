@@ -1,3 +1,30 @@
+<script type="text/javascript" charset="utf-8"> 
+   $(function () {
+  $('.upload').fileUploadUI({
+        uploadTable: $('.upload_files'),
+        downloadTable: $('.download_files'),
+        buildUploadRow: function (files, index) {
+            var file = files[index];
+            return $('<tr><td>' + file.name + '<\/td>' +
+                    '<td class="file_upload_progress"><div><\/div><\/td>' +
+                    '<td class="file_upload_cancel">' +
+                    '<button class="ui-state-default ui-corner-all" title="Cancel">' +
+                    '<span class="ui-icon ui-icon-cancel">Cancel<\/span>' +
+                    '<\/button><\/td><\/tr>');
+        },
+        buildDownloadRow: function (file) {
+            return $('<tr><td><img alt="Photo" width="40" height="40" src="' + file.pic_path + '">' + file.name + '<\/td><\/tr>');
+        },
+        /*beforeSend: function (event, files, index, xhr, handler, callBack) {
+          handler.uploadRow.find('.file_upload_start button').click(function () {
+            callBack();
+              return false;
+          });
+        }*/
+    });
+});
+</script>
+
 <%= form_for([@stream, @post]) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -21,3 +48,27 @@
   </div>
 <% end %>
 
+<div class="files"> 
+<%= form_for Upload.new, :html => { :class => "upload", :multipart => true } do |f| %>
+  <%= f.file_field :picture %>
+  <div>Upload files</div>
+<% end %>
+
+<table class="upload_files"></table>
+<table class="download_files"></table>
+
+<div class="buttons">
+  <button style="" class="ui-button ui-state-default ui-corner-all ui-button-text-icon-primary" id="file_upload_start">
+      <span class="ui-button-icon-primary ui-icon ui-icon-circle-arrow-e"></span>
+      <span class="ui-button-text">Start All</span>
+  </button>
+  <button style="" class="ui-button ui-state-default ui-corner-all ui-button-text-icon-primary" id="file_upload_cancel">
+      <span class="ui-button-icon-primary ui-icon ui-icon-cancel"></span>
+      <span class="ui-button-text">Cancel All</span>
+  </button>
+  <button style="display:none;" class="ui-button ui-state-default ui-corner-all ui-button-text-icon-primary" id="file_delete">
+      <span class="ui-button-icon-primary ui-icon ui-icon-trash"></span>
+      <span class="ui-button-text">Delete All</span>
+  </button>
+</div>
+</div>
