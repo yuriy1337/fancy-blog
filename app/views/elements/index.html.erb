@@ -1,0 +1,37 @@
+<h1>Listing elements</h1>
+
+<table>
+  <tr>
+    <th>Post</th>
+    <th>Description</th>
+    <th>Path</th>
+    <th>Filename</th>
+    <th>Content type</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @elements.each do |element| %>
+  <tr>
+    <td><%= element.post_id %></td>
+    <td><%= element.description %></td>
+    <td><%= element.path %></td>
+    <td><%= element.filename %></td>
+    <td><%= element.content_type %></td>
+    <td><%= element.width %></td>
+    <td><%= element.height %></td>
+    <td><%= element.type %></td>
+    <td><%= link_to 'Show', element %></td>
+    <td><%= link_to 'Edit', edit_element_path(element) %></td>
+    <td><%= link_to 'Destroy', element, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Element', new_element_path %>

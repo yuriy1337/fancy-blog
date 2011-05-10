@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Post:</b>
+  <%= @element.post_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @element.description %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%= @element.path %>
+</p>
+
+<p>
+  <b>Filename:</b>
+  <%= @element.filename %>
+</p>
+
+<p>
+  <b>Content type:</b>
+  <%= @element.content_type %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%= @element.width %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @element.height %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @element.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_element_path(@element) %> |
+<%= link_to 'Back', elements_path %>

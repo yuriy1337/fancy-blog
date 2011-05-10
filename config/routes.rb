@@ -1,5 +1,7 @@
 Bridalka::Application.routes.draw do
   
+  resources :elements
+
   #resources :tags
 
   resources :uploads
