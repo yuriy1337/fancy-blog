@@ -1,3 +1,2 @@
-class Image < ActiveRecord::Base
-  belongs_to :post
+class Image < Element
 end

@@ -1,8 +1,15 @@
 class ElementsController < ApplicationController
+  
+  before_filter :get_post
+
+  def get_post
+    @post = Post.find(params[:post_id])
+  end
+  
   # GET /elements
   # GET /elements.xml
   def index
-    @elements = Element.all
+    @elements = @post.elements.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +20,7 @@ class ElementsController < ApplicationController
   # GET /elements/1
   # GET /elements/1.xml
   def show
-    @element = Element.find(params[:id])
+    @element = @post.elements.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +31,7 @@ class ElementsController < ApplicationController
   # GET /elements/new
   # GET /elements/new.xml
   def new
-    @element = Element.new
+    @element = @post.elements.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +41,17 @@ class ElementsController < ApplicationController
 
   # GET /elements/1/edit
   def edit
-    @element = Element.find(params[:id])
+    @element = @post.element.find(params[:id])
   end
 
   # POST /elements
   # POST /elements.xml
   def create
-    @element = Element.new(params[:element])
+    @element = @post.element.new(params[:element])
 
     respond_to do |format|
       if @element.save
-        format.html { redirect_to(@element, :notice => 'Element was successfully created.') }
+        format.html { redirect_to([@post,@element], :notice => 'Element was successfully created.') }
         format.xml  { render :xml => @element, :status => :created, :location => @element }
       else
         format.html { render :action => "new" }
@@ -56,7 +63,7 @@ class ElementsController < ApplicationController
   # PUT /elements/1
   # PUT /elements/1.xml
   def update
-    @element = Element.find(params[:id])
+    @element = @post.element.find(params[:id])
 
     respond_to do |format|
       if @element.update_attributes(params[:element])
@@ -72,7 +79,7 @@ class ElementsController < ApplicationController
   # DELETE /elements/1
   # DELETE /elements/1.xml
   def destroy
-    @element = Element.find(params[:id])
+    @element = @post.element.find(params[:id])
     @element.destroy
 
     respond_to do |format|

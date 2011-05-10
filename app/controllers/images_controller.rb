@@ -1,8 +1,16 @@
 class ImagesController < ApplicationController
+  
+    before_filter :get_post
+
+  def get_post
+    @post = Post.find(params[:post_id])
+  end
+  
+  
   # GET /images
   # GET /images.xml
   def index
-    @images = Image.all
+    @images = @post.images.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +21,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.xml
   def show
-    @image = Image.find(params[:id])
+    @image = @post.images.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +32,7 @@ class ImagesController < ApplicationController
   # GET /images/new
   # GET /images/new.xml
   def new
-    @image = Image.new
+    @image = @post.images.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +42,17 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
-    @image = Image.find(params[:id])
+    @image = @post.images.find(params[:id])
   end
 
   # POST /images
   # POST /images.xml
   def create
-    @image = Image.new(params[:image])
+    @image = @post.images.new(params[:image])
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to(@image, :notice => 'Image was successfully created.') }
+        format.html { redirect_to([@post,@image], :notice => 'Image was successfully created.') }
         format.xml  { render :xml => @image, :status => :created, :location => @image }
       else
         format.html { render :action => "new" }
@@ -56,7 +64,7 @@ class ImagesController < ApplicationController
   # PUT /images/1
   # PUT /images/1.xml
   def update
-    @image = Image.find(params[:id])
+    @image = @post.images.find(params[:id])
 
     respond_to do |format|
       if @image.update_attributes(params[:image])
@@ -72,7 +80,7 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.xml
   def destroy
-    @image = Image.find(params[:id])
+    @image = @post.images.find(params[:id])
     @image.destroy
 
     respond_to do |format|

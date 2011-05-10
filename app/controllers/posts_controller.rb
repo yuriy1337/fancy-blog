@@ -32,7 +32,8 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     @post = Post.new
-
+    @post.save
+    @post.title = "Post #{@post.id}"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @post }
@@ -63,7 +64,7 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
-    params[:post][:category_ids]||=[]
+    params[:post][:tag_ids]||=[]
     @post = Post.find(params[:id])
     respond_to do |format|
       if @post.update_attributes(params[:post])

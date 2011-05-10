@@ -1,4 +1,4 @@
-<%= form_for(@image) do |f| %>
+<%= form_for([@post,@image]) do |f| %>
   <% if @image.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :width %><br />
-    <%= f.text_field :width %>
+    <%= f.label :path %><br />
+    <%= f.text_field :path %>
   </div>
   <div class="field">
-    <%= f.label :height %><br />
-    <%= f.text_field :height %>
+    <%= f.label :filename %><br />
+    <%= f.text_field :filename %>
   </div>
   <div class="actions">
     <%= f.submit %>

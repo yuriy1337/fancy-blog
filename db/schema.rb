@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110510041112) do
+ActiveRecord::Schema.define(:version => 20110510193846) do
+
+  create_table "elements", :force => true do |t|
+    t.integer  "post_id"
+    t.text     "description"
+    t.string   "path"
+    t.string   "filename"
+    t.string   "content_type"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "images", :force => true do |t|
     t.string   "name"
@@ -25,18 +38,11 @@ ActiveRecord::Schema.define(:version => 20110510041112) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "stream_id"
   end
 
   create_table "posts_tags", :id => false, :force => true do |t|
     t.integer "post_id"
     t.integer "tag_id"
-  end
-
-  create_table "streams", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "tags", :force => true do |t|

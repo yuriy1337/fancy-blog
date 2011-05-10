@@ -1,3 +1,2 @@
-class Video < ActiveRecord::Base
-  belongs_to :post
+class Video < Element
 end

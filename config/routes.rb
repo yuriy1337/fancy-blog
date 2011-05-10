@@ -1,19 +1,16 @@
 Bridalka::Application.routes.draw do
   
-  resources :elements
-
-  #resources :tags
-
-  resources :uploads
-
   devise_for :users
   
   resources :tags
   
   resources :posts do
-    resources :images
-    resources :videos
-  end  
+    resources :elements
+    resources :images #, :controller => "elements"
+    resources :videos #, :controller => "elements"  
+  end
+
+  resources :uploads
 
   root :to => 'tags#index'
   

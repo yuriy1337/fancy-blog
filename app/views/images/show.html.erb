@@ -1,8 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @image.name %>
+  <b>Post:</b>
+  <%= @image.post_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @image.description %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%= @image.path %>
+</p>
+
+<p>
+  <b>Filename:</b>
+  <%= @image.filename %>
+</p>
+
+<p>
+  <b>Content type:</b>
+  <%= @image.content_type %>
 </p>
 
 <p>
@@ -15,6 +35,11 @@
   <%= @image.height %>
 </p>
 
+<p>
+  <b>Type:</b>
+  <%= @image.type %>
+</p>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+
+<%= link_to 'Edit', edit_post_image_path(@post) %> |
+<%= link_to 'Back', post_images_path %>
