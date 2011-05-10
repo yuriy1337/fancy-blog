@@ -1,20 +1,19 @@
 Bridalka::Application.routes.draw do
   
+  #resources :tags
+
   resources :uploads
 
   devise_for :users
   
-  resources :streams do
-    resources :posts do #its not good not nest so many time, but anything 
-                        #a post should not be accessed and this is only 
-                        #for creating images and videos
-                        #its really for ajax to upload an image one by one
-      resources :images
-      resources :videos
-    end  
-  end
+  resources :tags
+  
+  resources :posts do
+    resources :images
+    resources :videos
+  end  
 
-  root :to => 'streams#index'
+  root :to => 'tags#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
