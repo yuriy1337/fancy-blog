@@ -48,6 +48,9 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.xml
   def create
+    puts "!!!!!!!!!!!!!"
+    puts params
+    puts "!!!!!!!!!!!!!"
     @image = @post.images.new(params[:image])
 
     respond_to do |format|
