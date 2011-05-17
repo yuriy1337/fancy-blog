@@ -8,3 +8,4 @@ log/*
 *.sqlite3
 *.DS_Store
 *.idea
+*.pid
