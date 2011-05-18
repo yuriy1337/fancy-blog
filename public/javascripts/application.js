@@ -6,10 +6,12 @@ $(document).ready(function() {
             $.ajax({
                 url: this.href,
                 success: function(data) {
-                     $('#add_images').before(data);
+                	var div = $("#elements").append("<div></div>");
+                	div.hide();
+                	div.html(data);
+                	div.slideDown();
                 },
                 complete: function(){          
-                    alert("complete");
                 }
             });
             return false;

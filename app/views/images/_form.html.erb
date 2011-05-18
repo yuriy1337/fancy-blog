@@ -25,7 +25,7 @@
 });
 </script>
 
-
+<!--
 <%= form_for([@post,@image]) do |f| %>
   <% if @image.errors.any? %>
     <div id="error_explanation">
@@ -75,10 +75,10 @@
     <%= f.submit %>
   </div>
 <% end %>
-
+-->
 <div class="files"> 
-<%= form_for Upload.new, :html => { :class => "upload", :multipart => true } do |f| %>
-  <%= f.file_field :picture %>
+<%= form_for [@post, @image], :html => { :class => "upload", :multipart => true } do |f| %>
+  <%= f.file_field :element %>
   <div>Upload files</div>
 <% end %>
 

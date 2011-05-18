@@ -35,7 +35,7 @@ class ImagesController < ApplicationController
     @image = @post.images.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :layout => false }
       format.xml  { render :xml => @image }
     end
   end
@@ -48,18 +48,13 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.xml
   def create
-    puts "!!!!!!!!!!!!!"
-    puts params
-    puts "!!!!!!!!!!!!!"
     @image = @post.images.new(params[:image])
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to([@post,@image], :notice => 'Image was successfully created.') }
-        format.xml  { render :xml => @image, :status => :created, :location => @image }
+        format.json { render :json => { :pic_path => @image.element.url.to_s , :name => @image.element.instance.attributes["element_file_name"] }, :content_type => 'text/html' }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @image.errors, :status => :unprocessable_entity }
+        format.json { render :json => { :result => 'error'}, :content_type => 'text/html' }
       end
     end
   end

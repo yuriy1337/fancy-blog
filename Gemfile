@@ -12,6 +12,7 @@ gem 'jrails'
 gem 'will_paginate'
 gem 'devise'
 gem 'i18n'
+gem 'paperclip'
 
 # Use unicorn as the web server
 # gem 'unicorn'
