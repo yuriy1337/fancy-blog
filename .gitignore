@@ -7,6 +7,8 @@ log/*
 */public/assets/**
 */public/assets/*
 */public/assets/
+*/public/assets
+public/assets
 *.log
 *.sqlite3
 *.DS_Store
