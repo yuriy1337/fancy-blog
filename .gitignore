@@ -4,7 +4,7 @@ log/*
 */log/
 */nbproject/
 */.bundle/
-*/public/assets/**
+*/public/assets/
 *.log
 *.sqlite3
 *.DS_Store
