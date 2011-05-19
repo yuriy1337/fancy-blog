@@ -6,9 +6,9 @@
   <br />
   Posts:
   <br />
-  <%= @tag.posts.all %>
-  <% @tag.posts.all do |p|%>
-    <%= p.title %>
+  <%= render @tag.posts.all %>
+  <% @tag.posts.each do |post|%>
+    <!-- render :partial => "posts/show", :locals => { :post => post }-->
   <% end %>
 </p>
 

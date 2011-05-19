@@ -1,102 +1,21 @@
-<script type="text/javascript" charset="utf-8"> 
-   $(function () {
-  $('.upload').fileUploadUI({
-        uploadTable: $('.upload_files'),
-        downloadTable: $('.download_files'),
-        buildUploadRow: function (files, index) {
-            var file = files[index];
-            return $('<tr><td>' + file.name + '<\/td>' +
-                    '<td class="file_upload_progress"><div><\/div><\/td>' +
-                    '<td class="file_upload_cancel">' +
-                    '<button class="ui-state-default ui-corner-all" title="Cancel">' +
-                    '<span class="ui-icon ui-icon-cancel">Cancel<\/span>' +
-                    '<\/button><\/td><\/tr>');
-        },
-        buildDownloadRow: function (file) {
-            return $('<tr><td><img alt="Photo" width="40" height="40" src="' + file.pic_path + '">' + file.name + '<\/td><\/tr>');
-        },
-        /*beforeSend: function (event, files, index, xhr, handler, callBack) {
-          handler.uploadRow.find('.file_upload_start button').click(function () {
-            callBack();
-              return false;
-          });
-        }*/
-    });
-});
-</script>
 
-<!--
-<%= form_for([@post,@image]) do |f| %>
-  <% if @image.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@image.errors.count, "error") %> prohibited this element from being saved:</h2>
-
-      <ul>
-      <% @image.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<div class="files"> 
+  <%= form_for [@post, @image], :html => { :class => "upload", :multipart => true } do |f| %>
+    <% if @image.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@image.errors.count, "error") %> prohibited this element from being saved:</h2>
+  
+        <ul>
+        <% @image.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>  
+    <%= f.file_field :element %>
+    <div>Upload files</div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :post_id %><br />
-    <%= f.text_field :post_id %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :path %><br />
-    <%= f.text_field :path %>
-  </div>
-  <div class="field">
-    <%= f.label :filename %><br />
-    <%= f.text_field :filename %>
-  </div>
-  <div class="field">
-    <%= f.label :content_type %><br />
-    <%= f.text_field :content_type %>
-  </div>
-  <div class="field">
-    <%= f.label :width %><br />
-    <%= f.text_field :width %>
-  </div>
-  <div class="field">
-    <%= f.label :height %><br />
-    <%= f.text_field :height %>
-  </div>
-  <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
--->
-<div class="files"> 
-<%= form_for [@post, @image], :html => { :class => "upload", :multipart => true } do |f| %>
-  <%= f.file_field :element %>
-  <div>Upload files</div>
-<% end %>
-
-<table class="upload_files"></table>
-<table class="download_files"></table>
-
-<div class="buttons">
-  <button style="" class="ui-button ui-state-default ui-corner-all ui-button-text-icon-primary" id="file_upload_start">
-      <span class="ui-button-icon-primary ui-icon ui-icon-circle-arrow-e"></span>
-      <span class="ui-button-text">Start All</span>
-  </button>
-  <button style="" class="ui-button ui-state-default ui-corner-all ui-button-text-icon-primary" id="file_upload_cancel">
-      <span class="ui-button-icon-primary ui-icon ui-icon-cancel"></span>
-      <span class="ui-button-text">Cancel All</span>
-  </button>
-  <button style="display:none;" class="ui-button ui-state-default ui-corner-all ui-button-text-icon-primary" id="file_delete">
-      <span class="ui-button-icon-primary ui-icon ui-icon-trash"></span>
-      <span class="ui-button-text">Delete All</span>
-  </button>
-</div>
+  <table class="upload_files"></table>
+  <table class="download_files"></table>
 </div>

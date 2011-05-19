@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.xml
   def show
-    @image = @post.images.find(params[:id])
+    @images = @post.images.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

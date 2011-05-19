@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= post.title %>
+<!-- remove this later -->
+  <% render post.elements.all %>
+
+  <% post.elements.each do |elem|%>
+    <%= render elem %>
+  <% end %>
+</p>
