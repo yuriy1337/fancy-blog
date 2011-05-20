@@ -5,8 +5,14 @@
   <%= post.title %>
 <!-- remove this later -->
   <% render post.elements.all %>
+  <% prev_type = "" %>
+  <% tCount = 0 %>
+  <% post.elements.each do |elem| %>
+    <% if elem.type.eql?(prev_type) == false %>
+      <% tCount = tCount + 1 %>
 
-  <% post.elements.each do |elem|%>
-    <%= render elem %>
+    <% end %>
+    <%= render elem, {:post_id => post.id, :groupNumber => tCount} %>
+    <% prev_type = elem.type%>
   <% end %>
 </p>

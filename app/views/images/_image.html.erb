@@ -1,3 +1,8 @@
 <br />
-<%= image_tag image.element.url.to_s, :size => "160x100" %>
+
+<%= link_to(
+      image_tag(image.element.url.to_s, :size => "160x100"), 
+      image.element.url.to_s, 
+      :class => "grouped_elements", 
+      :rel => "post_#{local_assigns[:post_id]}_group_#{local_assigns[:groupNumber]}" ) %>
 
