@@ -1,34 +1,14 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %><br />
+  <div class="group">
+    <%= f.label :title, t("activerecord.attributes.post.title", :default => "Title"), :class => :label %>
+    <%= f.text_field :title, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
   </div>
-  <% for tag in Tag.all %>
-  <div>
-    <%= check_box_tag "post[tag_ids][]", tag.id, @post.tags.include?(tag) %>
-    <%= tag.name %>
-  </div>
-  <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<div id="elements">
-</div>
-
-<div id="new_elements">
-  <%= link_to "Add Images", new_post_image_url(@post), :id=>"add_images"  %>
+        
+<div class="group navform wat-cf">
+  <button class="button" type="submit">
+    <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+  </button>
+  <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
+	<%= link_to t("web-app-theme.cancel", :default => "Cancel"), posts_path, :class => "text_button_padding link_button" %>
 </div>

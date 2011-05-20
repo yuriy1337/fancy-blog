@@ -1,37 +1,48 @@
-<h1>Listing elements</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", elements_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_element_path %></li>
+    </ul>
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Elements</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th class="first">ID</th>
+                    <th>
+            <%= t("activerecord.attributes.element.post_id", :default => t("activerecord.labels.post_id", :default => "Post_id")) %>
+          </th>
+                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @elements.each do |element| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= element.id %>
+          </td>
+                    <td>
+            <%= link_to element.post_id, element_path(element) %>
+          </td>
+                    <td>
+            <%= element.created_at %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", element_path(element) %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_element_path(element) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", element_path(element), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Post</th>
-    <th>Description</th>
-    <th>Path</th>
-    <th>Filename</th>
-    <th>Content type</th>
-    <th>Width</th>
-    <th>Height</th>
-    <th>Type</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @elements.each do |element| %>
-  <tr>
-    <td><%= element.post_id %></td>
-    <td><%= element.description %></td>
-    <td><%= element.path %></td>
-    <td><%= element.filename %></td>
-    <td><%= element.content_type %></td>
-    <td><%= element.width %></td>
-    <td><%= element.height %></td>
-    <td><%= element.type %></td>
-    <td><%= link_to 'Show', element %></td>
-    <td><%= link_to 'Edit', edit_element_path(element) %></td>
-    <td><%= link_to 'Destroy', element, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Element', new_element_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

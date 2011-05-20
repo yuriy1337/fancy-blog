@@ -79,7 +79,8 @@ GEM
     tzinfo (0.3.27)
     warden (1.0.4)
       rack (>= 1.0)
-    will_paginate (2.3.15)
+    web-app-theme (0.6.3)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   x86-mingw32
@@ -92,4 +93,5 @@ DEPENDENCIES
   paperclip
   rails (= 3.0.7)
   sqlite3
-  will_paginate
+  web-app-theme (>= 0.6.2)
+  will_paginate (~> 3.0.beta)

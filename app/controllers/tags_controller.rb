@@ -1,9 +1,11 @@
 class TagsController < ApplicationController
+  cattr_reader :per_page
+  @@per_page = 10
   # GET /tags
   # GET /tags.xml
   def index
-    @tags = Tag.all
-
+    #@tags = Tag.all
+    @tags = Tag.paginate :page => params[:page], :order => 'created_at DESC'
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tags }

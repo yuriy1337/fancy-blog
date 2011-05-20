@@ -9,10 +9,11 @@ gem 'sqlite3'
 
 gem 'jquery-rails', '>= 0.2.6'
 gem 'jrails'
-gem 'will_paginate'
+gem 'will_paginate', '~> 3.0.beta'
 gem 'devise'
 gem 'i18n'
 gem 'paperclip'
+gem 'web-app-theme', '>= 0.6.2'
 
 # Use unicorn as the web server
 # gem 'unicorn'

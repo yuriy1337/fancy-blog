@@ -1,102 +1,80 @@
-<script type="text/javascript" charset="utf-8"> 
-   $(function () {
-  $('.upload').fileUploadUI({
-        uploadTable: $('.upload_files'),
-        downloadTable: $('.download_files'),
-        buildUploadRow: function (files, index) {
-            var file = files[index];
-            return $('<tr><td>' + file.name + '<\/td>' +
-                    '<td class="file_upload_progress"><div><\/div><\/td>' +
-                    '<td class="file_upload_cancel">' +
-                    '<button class="ui-state-default ui-corner-all" title="Cancel">' +
-                    '<span class="ui-icon ui-icon-cancel">Cancel<\/span>' +
-                    '<\/button><\/td><\/tr>');
-        },
-        buildDownloadRow: function (file) {
-            return $('<tr><td><img alt="Photo" width="40" height="40" src="' + file.pic_path + '">' + file.name + '<\/td><\/tr>');
-        },
-        /*beforeSend: function (event, files, index, xhr, handler, callBack) {
-          handler.uploadRow.find('.file_upload_start button').click(function () {
-            callBack();
-              return false;
-          });
-        }*/
-    });
-});
-</script>
 
+  <div class="group">
+    <%= f.label :post_id, t("activerecord.attributes.element.post_id", :default => "Post"), :class => :label %>
+    <%= f.text_field :post_id, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
 
-<%= form_for([@post,@element]) do |f| %>
-  <% if @element.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@element.errors.count, "error") %> prohibited this element from being saved:</h2>
+  <div class="group">
+    <%= f.label :description, t("activerecord.attributes.element.description", :default => "Description"), :class => :label %>
+    <%= f.text_area :description, :class => 'text_area' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
 
-      <ul>
-      <% @element.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="group">
+    <%= f.label :path, t("activerecord.attributes.element.path", :default => "Path"), :class => :label %>
+    <%= f.text_field :path, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
 
-  <div class="field">
-    <%= f.label :post_id %><br />
-    <%= f.text_field :post_id %>
+  <div class="group">
+    <%= f.label :filename, t("activerecord.attributes.element.filename", :default => "Filename"), :class => :label %>
+    <%= f.text_field :filename, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :path %><br />
-    <%= f.text_field :path %>
-  </div>
-  <div class="field">
-    <%= f.label :filename %><br />
-    <%= f.text_field :filename %>
-  </div>
-  <div class="field">
-    <%= f.label :content_type %><br />
-    <%= f.text_field :content_type %>
-  </div>
-  <div class="field">
-    <%= f.label :width %><br />
-    <%= f.text_field :width %>
-  </div>
-  <div class="field">
-    <%= f.label :height %><br />
-    <%= f.text_field :height %>
-  </div>
-  <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
 
-<div class="files"> 
-<%= form_for Upload.new, :html => { :class => "upload", :multipart => true } do |f| %>
-  <%= f.file_field :picture %>
-  <div>Upload files</div>
-<% end %>
+  <div class="group">
+    <%= f.label :content_type, t("activerecord.attributes.element.content_type", :default => "Content type"), :class => :label %>
+    <%= f.text_field :content_type, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
 
-<table class="upload_files"></table>
-<table class="download_files"></table>
+  <div class="group">
+    <%= f.label :width, t("activerecord.attributes.element.width", :default => "Width"), :class => :label %>
+    <%= f.text_field :width, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
 
-<div class="buttons">
-  <button style="" class="ui-button ui-state-default ui-corner-all ui-button-text-icon-primary" id="file_upload_start">
-      <span class="ui-button-icon-primary ui-icon ui-icon-circle-arrow-e"></span>
-      <span class="ui-button-text">Start All</span>
+  <div class="group">
+    <%= f.label :height, t("activerecord.attributes.element.height", :default => "Height"), :class => :label %>
+    <%= f.text_field :height, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
+    <%= f.label :type, t("activerecord.attributes.element.type", :default => "Type"), :class => :label %>
+    <%= f.text_field :type, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
+    <%= f.label :element_file_name, t("activerecord.attributes.element.element_file_name", :default => "Element file name"), :class => :label %>
+    <%= f.text_field :element_file_name, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
+    <%= f.label :element_content_type, t("activerecord.attributes.element.element_content_type", :default => "Element content type"), :class => :label %>
+    <%= f.text_field :element_content_type, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
+    <%= f.label :element_file_size, t("activerecord.attributes.element.element_file_size", :default => "Element file size"), :class => :label %>
+    <%= f.text_field :element_file_size, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
+    <%= f.label :element_updated_at, t("activerecord.attributes.element.element_updated_at", :default => "Element updated at"), :class => :label %>
+    <%= f.datetime_select :element_updated_at, :class => 'datetime_select' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+        
+<div class="group navform wat-cf">
+  <button class="button" type="submit">
+    <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
   </button>
-  <button style="" class="ui-button ui-state-default ui-corner-all ui-button-text-icon-primary" id="file_upload_cancel">
-      <span class="ui-button-icon-primary ui-icon ui-icon-cancel"></span>
-      <span class="ui-button-text">Cancel All</span>
-  </button>
-  <button style="display:none;" class="ui-button ui-state-default ui-corner-all ui-button-text-icon-primary" id="file_delete">
-      <span class="ui-button-icon-primary ui-icon ui-icon-trash"></span>
-      <span class="ui-button-text">Delete All</span>
-  </button>
-</div>
+  <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
+	<%= link_to t("web-app-theme.cancel", :default => "Cancel"), elements_path, :class => "text_button_padding link_button" %>
 </div>
