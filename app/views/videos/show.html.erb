@@ -1,20 +1,79 @@
-<p id="notice"><%= notice %></p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", videos_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_video_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", video_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.video.post_id", :default => t("activerecord.labels.post_id", :default => "Post")) %>:</b>
+          <%= @video.post_id %>
+        </p>
 
-<p>
-  <b>Name:</b>
-  <%= @video.name %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.video.description", :default => t("activerecord.labels.description", :default => "Description")) %>:</b>
+          <%= @video.description %>
+        </p>
 
-<p>
-  <b>Width:</b>
-  <%= @video.width %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.video.path", :default => t("activerecord.labels.path", :default => "Path")) %>:</b>
+          <%= @video.path %>
+        </p>
 
-<p>
-  <b>Height:</b>
-  <%= @video.height %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.video.filename", :default => t("activerecord.labels.filename", :default => "Filename")) %>:</b>
+          <%= @video.filename %>
+        </p>
 
+        <p>
+          <b><%= t("activerecord.attributes.video.content_type", :default => t("activerecord.labels.content_type", :default => "Content type")) %>:</b>
+          <%= @video.content_type %>
+        </p>
 
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+        <p>
+          <b><%= t("activerecord.attributes.video.width", :default => t("activerecord.labels.width", :default => "Width")) %>:</b>
+          <%= @video.width %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.video.height", :default => t("activerecord.labels.height", :default => "Height")) %>:</b>
+          <%= @video.height %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.video.type", :default => t("activerecord.labels.type", :default => "Type")) %>:</b>
+          <%= @video.type %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.video.element_file_name", :default => t("activerecord.labels.element_file_name", :default => "Element file name")) %>:</b>
+          <%= @video.element_file_name %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.video.element_content_type", :default => t("activerecord.labels.element_content_type", :default => "Element content type")) %>:</b>
+          <%= @video.element_content_type %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.video.element_file_size", :default => t("activerecord.labels.element_file_size", :default => "Element file size")) %>:</b>
+          <%= @video.element_file_size %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.video.element_updated_at", :default => t("activerecord.labels.element_updated_at", :default => "Element updated at")) %>:</b>
+          <%= @video.element_updated_at %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_video_path(@video), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), video_path(@video), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

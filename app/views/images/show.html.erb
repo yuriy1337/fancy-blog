@@ -1,48 +1,79 @@
-<p id="notice"><%= notice %></p>
-<!--
-<p>
-  <b>Post:</b>
-  <%= @image.post_id %>
-</p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", images_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_image_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", image_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.image.post_id", :default => t("activerecord.labels.post_id", :default => "Post")) %>:</b>
+          <%= @image.post_id %>
+        </p>
 
-<p>
-  <b>Description:</b>
-  <%= @image.description %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.image.description", :default => t("activerecord.labels.description", :default => "Description")) %>:</b>
+          <%= @image.description %>
+        </p>
 
-<p>
-  <b>Path:</b>
-  <%= @image.path %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.image.path", :default => t("activerecord.labels.path", :default => "Path")) %>:</b>
+          <%= @image.path %>
+        </p>
 
-<p>
-  <b>Filename:</b>
-  <%= @image.filename %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.image.filename", :default => t("activerecord.labels.filename", :default => "Filename")) %>:</b>
+          <%= @image.filename %>
+        </p>
 
-<p>
-  <b>Content type:</b>
-  <%= @image.content_type %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.image.content_type", :default => t("activerecord.labels.content_type", :default => "Content type")) %>:</b>
+          <%= @image.content_type %>
+        </p>
 
-<p>
-  <b>Width:</b>
-  <%= @image.width %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.image.width", :default => t("activerecord.labels.width", :default => "Width")) %>:</b>
+          <%= @image.width %>
+        </p>
 
-<p>
-  <b>Height:</b>
-  <%= @image.height %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.image.height", :default => t("activerecord.labels.height", :default => "Height")) %>:</b>
+          <%= @image.height %>
+        </p>
 
-<p>
-  <b>Type:</b>
-  <%= @image.type %>
-</p>
--->
-<% @images.each do |image| %>
-  image.element.url.to_s
-<% end %>
+        <p>
+          <b><%= t("activerecord.attributes.image.type", :default => t("activerecord.labels.type", :default => "Type")) %>:</b>
+          <%= @image.type %>
+        </p>
 
-<%= link_to 'Edit', edit_post_image_path(@post) %> |
-<%= link_to 'Back', post_images_path %>
+        <p>
+          <b><%= t("activerecord.attributes.image.element_file_name", :default => t("activerecord.labels.element_file_name", :default => "Element file name")) %>:</b>
+          <%= @image.element_file_name %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.image.element_content_type", :default => t("activerecord.labels.element_content_type", :default => "Element content type")) %>:</b>
+          <%= @image.element_content_type %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.image.element_file_size", :default => t("activerecord.labels.element_file_size", :default => "Element file size")) %>:</b>
+          <%= @image.element_file_size %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.image.element_updated_at", :default => t("activerecord.labels.element_updated_at", :default => "Element updated at")) %>:</b>
+          <%= @image.element_updated_at %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_image_path(@image), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), image_path(@image), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
