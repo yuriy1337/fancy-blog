@@ -1,40 +1,40 @@
-<div class="block">
+<!--<div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", images_path  %></li>
-      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_image_path %></li>
+      <li class="first active">< link_to "#{t("web-app-theme.list", :default => "List")}", images_path  %></li>
+      <li>< link_to "#{t("web-app-theme.new", :default => "New")}", new_image_path %></li>
     </ul>
   </div>          
   <div class="content">          
-    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Images</h2>
+    <h2 class="title">< t("web-app-theme.all", :default => "All")  %> Images</h2>
     <div class="inner">
       <table class="table">
         <tr>             
           <th class="first">ID</th>
                     <th>
-            <%= t("activerecord.attributes.image.post_id", :default => t("activerecord.labels.post_id", :default => "Post_id")) %>
+            < t("activerecord.attributes.image.post_id", :default => t("activerecord.labels.post_id", :default => "Post_id")) %>
           </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+                    <th>< t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
-        <% @images.each do |image| -%>
+        < @images.each do |image| >
         <tr class="<%= cycle("odd", "even") %>">
           <td>
-            <%= image.id %>
+            < image.id %>
           </td>
                     <td>
-            <%= link_to image.post_id, image_path(image) %>
+            < link_to image.post_id, image_path(image) %>
           </td>
                     <td>
-            <%= image.created_at %>
+            < image.created_at %>
           </td>
           <td class="last">
-            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", image_path(image) %> |
-            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_image_path(image) %> |
-            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", image_path(image), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+            < link_to "#{t("web-app-theme.show", :default => "Show")}", image_path(image) %> |
+            < link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_image_path(image) %> |
+            < link_to "#{t("web-app-theme.delete", :default => "Delete")}", image_path(image), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
           </td>
         </tr>          
-        <% end -%>
+        < end >
       </table>
       <div class="actions-bar wat-cf">
         <div class="actions">
@@ -46,3 +46,40 @@
 </div>
 
 <% content_for :sidebar, render(:partial => 'sidebar') -%>
+-->
+<%= stylesheet_link_tag('jquery.fileupload-ui') %>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+<%= javascript_include_tag 'jquery.fileupload', 'jquery.fileupload-ui' %>
+
+<script type="text/javascript" charset="utf-8"> 
+   $(function () {
+  $('.upload').fileUploadUI({
+        uploadTable: $('.upload_files'),
+        downloadTable: $('.download_files'),
+        buildUploadRow: function (files, index) {
+            var file = files[index];
+            return $('<tr><td>' + file.name + '<\/td>' +
+                    '<td class="file_upload_progress"><div><\/div><\/td>' +
+                    '<td class="file_upload_cancel">' +
+                    '<button class="ui-state-default ui-corner-all" title="Cancel">' +
+                    '<span class="ui-icon ui-icon-cancel">Cancel<\/span>' +
+                    '<\/button><\/td><\/tr>');
+        },
+        buildDownloadRow: function (file) {
+            return $('<tr><td><img alt="Photo" width="40" height="40" src="' + file.pic_path + '">' + file.name + '<\/td><\/tr>');
+        },
+    });
+});
+</script>
+
+<div class="files"> 
+<%= form_for [@post, @image], :html => { :class => "upload", :multipart => true } do |f| %>
+  <%= f.file_field :picture %>
+  <div>Upload files</div>
+<% end %>
+
+<table class="upload_files"></table>
+<table class="download_files"></table>
+</div>

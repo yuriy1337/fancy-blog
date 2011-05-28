@@ -4,7 +4,24 @@
     <%= f.text_field :title, :class => 'text_field' %>
     <span class="description">Ex: a simple text</span>
   </div>
-        
+ <div class="group">
+   <% for tag in Tag.all %>
+    <div>
+      <%= check_box_tag "post[tag_ids][]", tag.id, @post.tags.include?(tag) %>
+      <%= tag.name %>
+    </div>
+   <% end %>
+ </div>
+
+ <div class="group">
+   <div id="elements">
+   </div>
+ </div>
+ <div class="group">
+   <div id="new_elements">
+     <%= link_to "Add Images", new_post_image_url(@post), :id => "add_images" %>
+   </div>
+ </div>
 <div class="group navform wat-cf">
   <button class="button" type="submit">
     <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>

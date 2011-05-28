@@ -10,6 +10,7 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.xml
   def index
+    @image = @post.images.new
     @images = @post.images.all
 
     respond_to do |format|
@@ -35,7 +36,7 @@ class ImagesController < ApplicationController
     @image = @post.images.new
 
     respond_to do |format|
-      format.html { render :layout => false }
+      format.html { render :layout => false } 
       format.xml  { render :xml => @image }
     end
   end
