@@ -44,7 +44,7 @@ function init_drag_n_drop(){
 	            "<\/button><\/td><\/tr>");
 	  },
 	  buildDownloadRow: function (file) {
-	    return $("<tr><td><img alt='Photo' width='40' height='40' src='' + file.pic_path + ''>' + file.name + '<\/td><\/tr>");
+	    return $("<tr><td><img alt='Photo' width='40' height='40' src='" + file.pic_path + "'>" + file.name + "<\/td><\/tr>");
 	  },
 	});
 }

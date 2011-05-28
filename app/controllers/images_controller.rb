@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.xml
   def index
-    @image = @post.images.new
+
     @images = @post.images.all
 
     respond_to do |format|
