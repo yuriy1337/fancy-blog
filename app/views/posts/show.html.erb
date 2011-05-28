@@ -12,7 +12,15 @@
         <p>
           <b><%= t("activerecord.attributes.post.title", :default => t("activerecord.labels.title", :default => "Title")) %>:</b>
           <%= @post.title %>
-          <%= render @post.elements.all %>
+          <% prev_type = "" %>
+          <% tCount = 0 %>
+          <% @post.elements.each do |elem| %>
+            <% if elem.type.eql?(prev_type) == false %>
+              <% tCount = tCount + 1 %>
+            <% end %>
+            <%= render elem, {:post_id => @post.id, :groupNumber => tCount} %>
+            <% prev_type = elem.type%>
+          <% end %>
         </p>
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_post_path(@post), :class => "button" %> 
