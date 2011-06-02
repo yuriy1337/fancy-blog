@@ -14,7 +14,7 @@ pre {
 
 a { color: #000; }
 a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
+/*a:hover { color: #fff; background-color:#000; }*/
 
 div.field, div.actions {
   margin-bottom: 10px;
@@ -53,4 +53,13 @@ div.field, div.actions {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+
+.grouped_elements img {
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #BBBBBB;
+    margin: 7px 14px 7px 0;
+    padding: 5px;
+    width: 160px;
 }

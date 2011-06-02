@@ -47,7 +47,8 @@
 
 <% content_for :sidebar, render(:partial => 'sidebar') -%>
 -->
-<%= stylesheet_link_tag('jquery.fileupload-ui') %>
+<!--
+< stylesheet_link_tag('jquery.fileupload-ui') %>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
@@ -75,11 +76,14 @@
 </script>
 
 <div class="files"> 
-<%= form_for [@post, @image], :html => { :class => "upload", :multipart => true } do |f| %>
-  <%= f.file_field :picture %>
+< form_for [@post, @image], :html => { :class => "upload", :multipart => true } do |f| %>
+  < f.file_field :picture %>
   <div>Upload files</div>
-<% end %>
+< end %>
 
 <table class="upload_files"></table>
 <table class="download_files"></table>
-</div>
+</div>__-->
+<% @images.each do |img| %>
+  <%= img.id %><br>
+<% end %>
